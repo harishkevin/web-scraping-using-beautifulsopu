@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests  # request information from websites
 import time
 
-print("Type the skills you are unfamiliar with")
+print("Type the skills you are unfamiliar with") #filters out the skill you dont want
 unfamiliar_skills = input('>')
 print(f"filtering out {unfamiliar_skills}")
 
@@ -10,7 +10,7 @@ print(f"filtering out {unfamiliar_skills}")
 def find_jobs():
 
     html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=python&txtLocation=').text
-    soup = BeautifulSoup(html_text, 'lxml')
+    soup = BeautifulSoup(html_text, 'lxml') #lxml parcing is used
     jobs = soup.find_all('li', class_='clearfix job-bx wht-shd-bx')
     for index, job in enumerate(jobs):
         posted_date = job.find('span', class_='sim-posted').span.text
